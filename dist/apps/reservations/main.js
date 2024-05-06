@@ -88,9 +88,8 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ReservationSchema = exports.ReservationDocument = void 0;
 const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
 const common_1 = __webpack_require__(/*! @app/common */ "./libs/common/src/index.ts");
-let ReservationDocument = class ReservationDocument extends common_1.AbstractDocument {
+let ReservationDocument = exports.ReservationDocument = class ReservationDocument extends common_1.AbstractDocument {
 };
-exports.ReservationDocument = ReservationDocument;
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", typeof (_a = typeof Date !== "undefined" && Date) === "function" ? _a : Object)
@@ -149,7 +148,7 @@ const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const reservations_service_1 = __webpack_require__(/*! ./reservations.service */ "./apps/reservations/src/reservations.service.ts");
 const create_reservation_dto_1 = __webpack_require__(/*! ./dto/create-reservation.dto */ "./apps/reservations/src/dto/create-reservation.dto.ts");
 const update_reservation_dto_1 = __webpack_require__(/*! ./dto/update-reservation.dto */ "./apps/reservations/src/dto/update-reservation.dto.ts");
-let ReservationsController = class ReservationsController {
+let ReservationsController = exports.ReservationsController = class ReservationsController {
     constructor(reservationsService) {
         this.reservationsService = reservationsService;
     }
@@ -169,7 +168,6 @@ let ReservationsController = class ReservationsController {
         return this.reservationsService.remove(id);
     }
 };
-exports.ReservationsController = ReservationsController;
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
@@ -233,13 +231,14 @@ const reservations_service_1 = __webpack_require__(/*! ./reservations.service */
 const reservations_controller_1 = __webpack_require__(/*! ./reservations.controller */ "./apps/reservations/src/reservations.controller.ts");
 const common_2 = __webpack_require__(/*! @app/common */ "./libs/common/src/index.ts");
 const reservations_repository_1 = __webpack_require__(/*! ./reservations.repository */ "./apps/reservations/src/reservations.repository.ts");
+const common_3 = __webpack_require__(/*! @app/common */ "./libs/common/src/index.ts");
 const reservation_schema_1 = __webpack_require__(/*! ./models/reservation.schema */ "./apps/reservations/src/models/reservation.schema.ts");
-let ReservationsModule = class ReservationsModule {
+let ReservationsModule = exports.ReservationsModule = class ReservationsModule {
 };
-exports.ReservationsModule = ReservationsModule;
 exports.ReservationsModule = ReservationsModule = __decorate([
     (0, common_1.Module)({
         imports: [
+            common_3.LoggerModule,
             common_2.DbModule,
             common_2.DbModule.forFeature([
                 { name: reservation_schema_1.ReservationDocument.name, schema: reservation_schema_1.ReservationSchema },
@@ -281,13 +280,12 @@ const common_2 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const reservation_schema_1 = __webpack_require__(/*! ./models/reservation.schema */ "./apps/reservations/src/models/reservation.schema.ts");
 const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
 const mongoose_2 = __webpack_require__(/*! mongoose */ "mongoose");
-let ReservationsRepository = ReservationsRepository_1 = class ReservationsRepository extends common_1.AbstractRepository {
+let ReservationsRepository = exports.ReservationsRepository = ReservationsRepository_1 = class ReservationsRepository extends common_1.AbstractRepository {
     constructor(reservationModel) {
         super(reservationModel);
         this.logger = new common_2.Logger(ReservationsRepository_1.name);
     }
 };
-exports.ReservationsRepository = ReservationsRepository;
 exports.ReservationsRepository = ReservationsRepository = ReservationsRepository_1 = __decorate([
     (0, common_2.Injectable)(),
     __param(0, (0, mongoose_1.InjectModel)(reservation_schema_1.ReservationDocument.name)),
@@ -318,7 +316,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ReservationsService = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const reservations_repository_1 = __webpack_require__(/*! ./reservations.repository */ "./apps/reservations/src/reservations.repository.ts");
-let ReservationsService = class ReservationsService {
+let ReservationsService = exports.ReservationsService = class ReservationsService {
     constructor(reservationsRepository) {
         this.reservationsRepository = reservationsRepository;
     }
@@ -342,7 +340,6 @@ let ReservationsService = class ReservationsService {
         return this.reservationsRepository.findOneAndDelete({ _id });
     }
 };
-exports.ReservationsService = ReservationsService;
 exports.ReservationsService = ReservationsService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [typeof (_a = typeof reservations_repository_1.ReservationsRepository !== "undefined" && reservations_repository_1.ReservationsRepository) === "function" ? _a : Object])
@@ -368,9 +365,8 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ConfigModule = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const config_1 = __webpack_require__(/*! @nestjs/config */ "@nestjs/config");
-let ConfigModule = class ConfigModule {
+let ConfigModule = exports.ConfigModule = class ConfigModule {
 };
-exports.ConfigModule = ConfigModule;
 exports.ConfigModule = ConfigModule = __decorate([
     (0, common_1.Module)({ imports: [config_1.ConfigModule.forRoot()] })
 ], ConfigModule);
@@ -482,9 +478,8 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.AbstractDocument = void 0;
 const mongoose_1 = __webpack_require__(/*! mongoose */ "mongoose");
 const mongoose_2 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
-let AbstractDocument = class AbstractDocument {
+let AbstractDocument = exports.AbstractDocument = class AbstractDocument {
 };
-exports.AbstractDocument = AbstractDocument;
 __decorate([
     (0, mongoose_2.Prop)({ type: mongoose_1.SchemaTypes.ObjectId }),
     __metadata("design:type", typeof (_a = typeof mongoose_1.Types !== "undefined" && mongoose_1.Types.ObjectId) === "function" ? _a : Object)
@@ -514,12 +509,11 @@ exports.DbModule = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const config_1 = __webpack_require__(/*! @nestjs/config */ "@nestjs/config");
 const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
-let DbModule = class DbModule {
+let DbModule = exports.DbModule = class DbModule {
     static forFeature(models) {
         return mongoose_1.MongooseModule.forFeature(models);
     }
 };
-exports.DbModule = DbModule;
 exports.DbModule = DbModule = __decorate([
     (0, common_1.Module)({
         imports: [
@@ -590,6 +584,73 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 __exportStar(__webpack_require__(/*! ./config */ "./libs/common/src/config/index.ts"), exports);
 __exportStar(__webpack_require__(/*! ./db */ "./libs/common/src/db/index.ts"), exports);
+__exportStar(__webpack_require__(/*! ./logger */ "./libs/common/src/logger/index.ts"), exports);
+
+
+/***/ }),
+
+/***/ "./libs/common/src/logger/index.ts":
+/*!*****************************************!*\
+  !*** ./libs/common/src/logger/index.ts ***!
+  \*****************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__webpack_require__(/*! ./logger.module */ "./libs/common/src/logger/logger.module.ts"), exports);
+
+
+/***/ }),
+
+/***/ "./libs/common/src/logger/logger.module.ts":
+/*!*************************************************!*\
+  !*** ./libs/common/src/logger/logger.module.ts ***!
+  \*************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.LoggerModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const nestjs_pino_1 = __webpack_require__(/*! nestjs-pino */ "nestjs-pino");
+let LoggerModule = exports.LoggerModule = class LoggerModule {
+};
+exports.LoggerModule = LoggerModule = __decorate([
+    (0, common_1.Module)({
+        imports: [
+            nestjs_pino_1.LoggerModule.forRoot({
+                pinoHttp: {
+                    transport: {
+                        target: 'pino-pretty',
+                        options: {
+                            singleLine: true,
+                        },
+                    },
+                },
+            }),
+        ],
+    })
+], LoggerModule);
 
 
 /***/ }),
@@ -662,6 +723,16 @@ module.exports = require("class-validator");
 
 module.exports = require("mongoose");
 
+/***/ }),
+
+/***/ "nestjs-pino":
+/*!******************************!*\
+  !*** external "nestjs-pino" ***!
+  \******************************/
+/***/ ((module) => {
+
+module.exports = require("nestjs-pino");
+
 /***/ })
 
 /******/ 	});
@@ -703,10 +774,12 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core_1 = __webpack_require__(/*! @nestjs/core */ "@nestjs/core");
 const reservations_module_1 = __webpack_require__(/*! ./reservations.module */ "./apps/reservations/src/reservations.module.ts");
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const nestjs_pino_1 = __webpack_require__(/*! nestjs-pino */ "nestjs-pino");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(reservations_module_1.ReservationsModule);
+    app.useLogger(app.get(nestjs_pino_1.Logger));
     app.useGlobalPipes(new common_1.ValidationPipe());
-    await app.listen(3000);
+    await app.listen(3001);
 }
 bootstrap();
 
