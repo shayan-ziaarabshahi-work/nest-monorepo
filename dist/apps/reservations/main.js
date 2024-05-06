@@ -778,7 +778,7 @@ const nestjs_pino_1 = __webpack_require__(/*! nestjs-pino */ "nestjs-pino");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(reservations_module_1.ReservationsModule);
     app.useLogger(app.get(nestjs_pino_1.Logger));
-    app.useGlobalPipes(new common_1.ValidationPipe());
+    app.useGlobalPipes(new common_1.ValidationPipe({ whitelist: true }));
     await app.listen(3001);
 }
 bootstrap();
