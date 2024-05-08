@@ -2,10 +2,10 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./apps/reservations/src/dto/create-reservation.dto.ts":
-/*!*************************************************************!*\
-  !*** ./apps/reservations/src/dto/create-reservation.dto.ts ***!
-  \*************************************************************/
+/***/ "./apps/auth/src/auth.controller.ts":
+/*!******************************************!*\
+  !*** ./apps/auth/src/auth.controller.ts ***!
+  \******************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -18,59 +18,131 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var _a, _b;
+var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CreateReservationDto = void 0;
+exports.AuthController = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const auth_service_1 = __webpack_require__(/*! ./auth.service */ "./apps/auth/src/auth.service.ts");
+let AuthController = exports.AuthController = class AuthController {
+    constructor(authService) {
+        this.authService = authService;
+    }
+    getHello() {
+        return this.authService.getHello();
+    }
+};
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", String)
+], AuthController.prototype, "getHello", null);
+exports.AuthController = AuthController = __decorate([
+    (0, common_1.Controller)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof auth_service_1.AuthService !== "undefined" && auth_service_1.AuthService) === "function" ? _a : Object])
+], AuthController);
+
+
+/***/ }),
+
+/***/ "./apps/auth/src/auth.module.ts":
+/*!**************************************!*\
+  !*** ./apps/auth/src/auth.module.ts ***!
+  \**************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AuthModule = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const auth_controller_1 = __webpack_require__(/*! ./auth.controller */ "./apps/auth/src/auth.controller.ts");
+const auth_service_1 = __webpack_require__(/*! ./auth.service */ "./apps/auth/src/auth.service.ts");
+const users_module_1 = __webpack_require__(/*! ./users/users.module */ "./apps/auth/src/users/users.module.ts");
+let AuthModule = exports.AuthModule = class AuthModule {
+};
+exports.AuthModule = AuthModule = __decorate([
+    (0, common_1.Module)({
+        imports: [users_module_1.UsersModule],
+        controllers: [auth_controller_1.AuthController],
+        providers: [auth_service_1.AuthService],
+    })
+], AuthModule);
+
+
+/***/ }),
+
+/***/ "./apps/auth/src/auth.service.ts":
+/*!***************************************!*\
+  !*** ./apps/auth/src/auth.service.ts ***!
+  \***************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AuthService = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+let AuthService = exports.AuthService = class AuthService {
+    getHello() {
+        return 'Hello World!';
+    }
+};
+exports.AuthService = AuthService = __decorate([
+    (0, common_1.Injectable)()
+], AuthService);
+
+
+/***/ }),
+
+/***/ "./apps/auth/src/users/dto/create-user.dto.ts":
+/*!****************************************************!*\
+  !*** ./apps/auth/src/users/dto/create-user.dto.ts ***!
+  \****************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateUserDto = void 0;
 const class_validator_1 = __webpack_require__(/*! class-validator */ "class-validator");
-class CreateReservationDto {
+class CreateUserDto {
 }
-exports.CreateReservationDto = CreateReservationDto;
+exports.CreateUserDto = CreateUserDto;
 __decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsDateString)(),
-    __metadata("design:type", typeof (_a = typeof Date !== "undefined" && Date) === "function" ? _a : Object)
-], CreateReservationDto.prototype, "startDate", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsDateString)(),
-    __metadata("design:type", typeof (_b = typeof Date !== "undefined" && Date) === "function" ? _b : Object)
-], CreateReservationDto.prototype, "endDate", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsEmail)(),
     __metadata("design:type", String)
-], CreateReservationDto.prototype, "placeId", void 0);
+], CreateUserDto.prototype, "email", void 0);
 __decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsStrongPassword)(),
     __metadata("design:type", String)
-], CreateReservationDto.prototype, "invoiceId", void 0);
+], CreateUserDto.prototype, "password", void 0);
 
 
 /***/ }),
 
-/***/ "./apps/reservations/src/dto/update-reservation.dto.ts":
-/*!*************************************************************!*\
-  !*** ./apps/reservations/src/dto/update-reservation.dto.ts ***!
-  \*************************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UpdateReservationDto = void 0;
-const mapped_types_1 = __webpack_require__(/*! @nestjs/mapped-types */ "@nestjs/mapped-types");
-const create_reservation_dto_1 = __webpack_require__(/*! ./create-reservation.dto */ "./apps/reservations/src/dto/create-reservation.dto.ts");
-class UpdateReservationDto extends (0, mapped_types_1.PartialType)(create_reservation_dto_1.CreateReservationDto) {
-}
-exports.UpdateReservationDto = UpdateReservationDto;
-
-
-/***/ }),
-
-/***/ "./apps/reservations/src/models/reservation.schema.ts":
-/*!************************************************************!*\
-  !*** ./apps/reservations/src/models/reservation.schema.ts ***!
-  \************************************************************/
+/***/ "./apps/auth/src/users/models/user.schema.ts":
+/*!***************************************************!*\
+  !*** ./apps/auth/src/users/models/user.schema.ts ***!
+  \***************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -83,49 +155,32 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ReservationSchema = exports.ReservationDocument = void 0;
+exports.UserSchema = exports.UserDocument = void 0;
 const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
 const common_1 = __webpack_require__(/*! @app/common */ "./libs/common/src/index.ts");
-let ReservationDocument = exports.ReservationDocument = class ReservationDocument extends common_1.AbstractDocument {
+let UserDocument = exports.UserDocument = class UserDocument extends common_1.AbstractDocument {
 };
 __decorate([
     (0, mongoose_1.Prop)(),
-    __metadata("design:type", typeof (_a = typeof Date !== "undefined" && Date) === "function" ? _a : Object)
-], ReservationDocument.prototype, "timestamp", void 0);
-__decorate([
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", typeof (_b = typeof Date !== "undefined" && Date) === "function" ? _b : Object)
-], ReservationDocument.prototype, "startDate", void 0);
-__decorate([
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", typeof (_c = typeof Date !== "undefined" && Date) === "function" ? _c : Object)
-], ReservationDocument.prototype, "endDate", void 0);
+    __metadata("design:type", String)
+], UserDocument.prototype, "email", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
-], ReservationDocument.prototype, "userId", void 0);
-__decorate([
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], ReservationDocument.prototype, "placeId", void 0);
-__decorate([
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], ReservationDocument.prototype, "invoiceId", void 0);
-exports.ReservationDocument = ReservationDocument = __decorate([
+], UserDocument.prototype, "password", void 0);
+exports.UserDocument = UserDocument = __decorate([
     (0, mongoose_1.Schema)({ versionKey: false })
-], ReservationDocument);
-exports.ReservationSchema = mongoose_1.SchemaFactory.createForClass(ReservationDocument);
+], UserDocument);
+exports.UserSchema = mongoose_1.SchemaFactory.createForClass(UserDocument);
 
 
 /***/ }),
 
-/***/ "./apps/reservations/src/reservations.controller.ts":
-/*!**********************************************************!*\
-  !*** ./apps/reservations/src/reservations.controller.ts ***!
-  \**********************************************************/
+/***/ "./apps/auth/src/users/users.controller.ts":
+/*!*************************************************!*\
+  !*** ./apps/auth/src/users/users.controller.ts ***!
+  \*************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -141,80 +196,49 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a, _b, _c;
+var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ReservationsController = void 0;
+exports.UsersController = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const reservations_service_1 = __webpack_require__(/*! ./reservations.service */ "./apps/reservations/src/reservations.service.ts");
-const create_reservation_dto_1 = __webpack_require__(/*! ./dto/create-reservation.dto */ "./apps/reservations/src/dto/create-reservation.dto.ts");
-const update_reservation_dto_1 = __webpack_require__(/*! ./dto/update-reservation.dto */ "./apps/reservations/src/dto/update-reservation.dto.ts");
-let ReservationsController = exports.ReservationsController = class ReservationsController {
-    constructor(reservationsService) {
-        this.reservationsService = reservationsService;
+const users_service_1 = __webpack_require__(/*! ./users.service */ "./apps/auth/src/users/users.service.ts");
+const create_user_dto_1 = __webpack_require__(/*! ./dto/create-user.dto */ "./apps/auth/src/users/dto/create-user.dto.ts");
+let UsersController = exports.UsersController = class UsersController {
+    constructor(usersService) {
+        this.usersService = usersService;
     }
-    create(createReservationDto) {
-        return this.reservationsService.create(createReservationDto);
-    }
-    findAll() {
-        return this.reservationsService.findAll();
+    create(createUserDto) {
+        return this.usersService.create(createUserDto);
     }
     findOne(id) {
-        return this.reservationsService.findOne(id);
-    }
-    update(id, updateReservationDto) {
-        return this.reservationsService.update(id, updateReservationDto);
-    }
-    remove(id) {
-        return this.reservationsService.remove(id);
+        return this.usersService.findOne(+id);
     }
 };
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_b = typeof create_reservation_dto_1.CreateReservationDto !== "undefined" && create_reservation_dto_1.CreateReservationDto) === "function" ? _b : Object]),
+    __metadata("design:paramtypes", [typeof (_b = typeof create_user_dto_1.CreateUserDto !== "undefined" && create_user_dto_1.CreateUserDto) === "function" ? _b : Object]),
     __metadata("design:returntype", void 0)
-], ReservationsController.prototype, "create", null);
-__decorate([
-    (0, common_1.Get)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], ReservationsController.prototype, "findAll", null);
+], UsersController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], ReservationsController.prototype, "findOne", null);
-__decorate([
-    (0, common_1.Patch)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, typeof (_c = typeof update_reservation_dto_1.UpdateReservationDto !== "undefined" && update_reservation_dto_1.UpdateReservationDto) === "function" ? _c : Object]),
-    __metadata("design:returntype", void 0)
-], ReservationsController.prototype, "update", null);
-__decorate([
-    (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], ReservationsController.prototype, "remove", null);
-exports.ReservationsController = ReservationsController = __decorate([
-    (0, common_1.Controller)('reservations'),
-    __metadata("design:paramtypes", [typeof (_a = typeof reservations_service_1.ReservationsService !== "undefined" && reservations_service_1.ReservationsService) === "function" ? _a : Object])
-], ReservationsController);
+], UsersController.prototype, "findOne", null);
+exports.UsersController = UsersController = __decorate([
+    (0, common_1.Controller)('users'),
+    __metadata("design:paramtypes", [typeof (_a = typeof users_service_1.UsersService !== "undefined" && users_service_1.UsersService) === "function" ? _a : Object])
+], UsersController);
 
 
 /***/ }),
 
-/***/ "./apps/reservations/src/reservations.module.ts":
-/*!******************************************************!*\
-  !*** ./apps/reservations/src/reservations.module.ts ***!
-  \******************************************************/
+/***/ "./apps/auth/src/users/users.module.ts":
+/*!*********************************************!*\
+  !*** ./apps/auth/src/users/users.module.ts ***!
+  \*********************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -225,36 +249,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ReservationsModule = void 0;
+exports.UsersModule = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const reservations_service_1 = __webpack_require__(/*! ./reservations.service */ "./apps/reservations/src/reservations.service.ts");
-const reservations_controller_1 = __webpack_require__(/*! ./reservations.controller */ "./apps/reservations/src/reservations.controller.ts");
 const common_2 = __webpack_require__(/*! @app/common */ "./libs/common/src/index.ts");
-const reservations_repository_1 = __webpack_require__(/*! ./reservations.repository */ "./apps/reservations/src/reservations.repository.ts");
-const reservation_schema_1 = __webpack_require__(/*! ./models/reservation.schema */ "./apps/reservations/src/models/reservation.schema.ts");
-let ReservationsModule = exports.ReservationsModule = class ReservationsModule {
+const users_service_1 = __webpack_require__(/*! ./users.service */ "./apps/auth/src/users/users.service.ts");
+const users_controller_1 = __webpack_require__(/*! ./users.controller */ "./apps/auth/src/users/users.controller.ts");
+const user_schema_1 = __webpack_require__(/*! ./models/user.schema */ "./apps/auth/src/users/models/user.schema.ts");
+const users_repository_1 = __webpack_require__(/*! ./users.repository */ "./apps/auth/src/users/users.repository.ts");
+let UsersModule = exports.UsersModule = class UsersModule {
 };
-exports.ReservationsModule = ReservationsModule = __decorate([
+exports.UsersModule = UsersModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            common_2.LoggerModule,
             common_2.DbModule,
             common_2.DbModule.forFeature([
-                { name: reservation_schema_1.ReservationDocument.name, schema: reservation_schema_1.ReservationSchema },
+                { name: user_schema_1.UserDocument.name, schema: user_schema_1.UserSchema },
             ]),
         ],
-        controllers: [reservations_controller_1.ReservationsController],
-        providers: [reservations_service_1.ReservationsService, reservations_repository_1.ReservationsRepository],
+        controllers: [users_controller_1.UsersController],
+        providers: [users_service_1.UsersService, users_repository_1.UsersRepository],
     })
-], ReservationsModule);
+], UsersModule);
 
 
 /***/ }),
 
-/***/ "./apps/reservations/src/reservations.repository.ts":
-/*!**********************************************************!*\
-  !*** ./apps/reservations/src/reservations.repository.ts ***!
-  \**********************************************************/
+/***/ "./apps/auth/src/users/users.repository.ts":
+/*!*************************************************!*\
+  !*** ./apps/auth/src/users/users.repository.ts ***!
+  \*************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -270,34 +293,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var ReservationsRepository_1;
+var UsersRepository_1;
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ReservationsRepository = void 0;
-const common_1 = __webpack_require__(/*! @app/common */ "./libs/common/src/index.ts");
-const common_2 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const reservation_schema_1 = __webpack_require__(/*! ./models/reservation.schema */ "./apps/reservations/src/models/reservation.schema.ts");
-const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
-const mongoose_2 = __webpack_require__(/*! mongoose */ "mongoose");
-let ReservationsRepository = exports.ReservationsRepository = ReservationsRepository_1 = class ReservationsRepository extends common_1.AbstractRepository {
-    constructor(reservationModel) {
-        super(reservationModel);
-        this.logger = new common_2.Logger(ReservationsRepository_1.name);
+exports.UsersRepository = void 0;
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const common_2 = __webpack_require__(/*! @app/common */ "./libs/common/src/index.ts");
+const user_schema_1 = __webpack_require__(/*! ./models/user.schema */ "./apps/auth/src/users/models/user.schema.ts");
+const mongoose_1 = __webpack_require__(/*! mongoose */ "mongoose");
+const mongoose_2 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
+let UsersRepository = exports.UsersRepository = UsersRepository_1 = class UsersRepository extends common_2.AbstractRepository {
+    constructor(usersModel) {
+        super(usersModel);
+        this.logger = new common_1.Logger(UsersRepository_1.name);
     }
 };
-exports.ReservationsRepository = ReservationsRepository = ReservationsRepository_1 = __decorate([
-    (0, common_2.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)(reservation_schema_1.ReservationDocument.name)),
-    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object])
-], ReservationsRepository);
+exports.UsersRepository = UsersRepository = UsersRepository_1 = __decorate([
+    (0, common_1.Injectable)(),
+    __param(0, (0, mongoose_2.InjectModel)(user_schema_1.UserDocument.name)),
+    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_1.Model !== "undefined" && mongoose_1.Model) === "function" ? _a : Object])
+], UsersRepository);
 
 
 /***/ }),
 
-/***/ "./apps/reservations/src/reservations.service.ts":
-/*!*******************************************************!*\
-  !*** ./apps/reservations/src/reservations.service.ts ***!
-  \*******************************************************/
+/***/ "./apps/auth/src/users/users.service.ts":
+/*!**********************************************!*\
+  !*** ./apps/auth/src/users/users.service.ts ***!
+  \**********************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -312,37 +335,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ReservationsService = void 0;
+exports.UsersService = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const reservations_repository_1 = __webpack_require__(/*! ./reservations.repository */ "./apps/reservations/src/reservations.repository.ts");
-let ReservationsService = exports.ReservationsService = class ReservationsService {
-    constructor(reservationsRepository) {
-        this.reservationsRepository = reservationsRepository;
+const users_repository_1 = __webpack_require__(/*! ./users.repository */ "./apps/auth/src/users/users.repository.ts");
+let UsersService = exports.UsersService = class UsersService {
+    constructor(usersRepository) {
+        this.usersRepository = usersRepository;
     }
-    create(createReservationDto) {
-        return this.reservationsRepository.create({
-            ...createReservationDto,
-            timestamp: new Date(),
-            userId: '123',
+    create(createUserDto) {
+        return this.usersRepository.create({
+            ...createUserDto
         });
     }
-    findAll() {
-        return this.reservationsRepository.find({});
-    }
-    findOne(_id) {
-        return this.reservationsRepository.findOne({ _id });
-    }
-    update(_id, updateReservationDto) {
-        return this.reservationsRepository.findOneAndUpdate({ _id }, { $set: updateReservationDto });
-    }
-    remove(_id) {
-        return this.reservationsRepository.findOneAndDelete({ _id });
+    findOne(id) {
+        return `This action returns a #${id} user`;
     }
 };
-exports.ReservationsService = ReservationsService = __decorate([
+exports.UsersService = UsersService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof reservations_repository_1.ReservationsRepository !== "undefined" && reservations_repository_1.ReservationsRepository) === "function" ? _a : Object])
-], ReservationsService);
+    __metadata("design:paramtypes", [typeof (_a = typeof users_repository_1.UsersRepository !== "undefined" && users_repository_1.UsersRepository) === "function" ? _a : Object])
+], UsersService);
 
 
 /***/ }),
@@ -684,16 +696,6 @@ module.exports = require("@nestjs/core");
 
 /***/ }),
 
-/***/ "@nestjs/mapped-types":
-/*!***************************************!*\
-  !*** external "@nestjs/mapped-types" ***!
-  \***************************************/
-/***/ ((module) => {
-
-module.exports = require("@nestjs/mapped-types");
-
-/***/ }),
-
 /***/ "@nestjs/mongoose":
 /*!***********************************!*\
   !*** external "@nestjs/mongoose" ***!
@@ -765,17 +767,17 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 var exports = __webpack_exports__;
-/*!***************************************!*\
-  !*** ./apps/reservations/src/main.ts ***!
-  \***************************************/
+/*!*******************************!*\
+  !*** ./apps/auth/src/main.ts ***!
+  \*******************************/
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core_1 = __webpack_require__(/*! @nestjs/core */ "@nestjs/core");
-const reservations_module_1 = __webpack_require__(/*! ./reservations.module */ "./apps/reservations/src/reservations.module.ts");
+const auth_module_1 = __webpack_require__(/*! ./auth.module */ "./apps/auth/src/auth.module.ts");
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const nestjs_pino_1 = __webpack_require__(/*! nestjs-pino */ "nestjs-pino");
 async function bootstrap() {
-    const app = await core_1.NestFactory.create(reservations_module_1.ReservationsModule);
+    const app = await core_1.NestFactory.create(auth_module_1.AuthModule);
     app.useLogger(app.get(nestjs_pino_1.Logger));
     app.useGlobalPipes(new common_1.ValidationPipe({ whitelist: true }));
     await app.listen(3001);
